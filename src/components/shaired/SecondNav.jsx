@@ -42,7 +42,7 @@ const SecondNav = () => {
     return (
 
         <div>
-            <div className='md:flex lg:flex grid grid-cols-4 md:justify-between bg-slate-700 text-white md:px-40 lg:px-40 md:gap-0 lg:gap-0 gap-2 text-center md:py-2 '>
+            <div className='md:flex lg:flex grid grid-cols-4 md:justify-between bg-[#201212] text-white md:px-48 lg:px-64 md:gap-0 lg:gap-0 gap-2 text-center md:py-4 lg:py-4 '>
 
 
                 {/* -------------------------------------- Writer--------------------------- */}

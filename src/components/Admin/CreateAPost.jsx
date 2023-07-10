@@ -47,12 +47,13 @@ const CreateAPost = () => {
         const category_1 = form.category_1.value;
         const category_2 = form.category_2.value;
         const category_3 = form.category_3.value;
+        const category_4 = form.category_4.value;
         const bookPrice = form.bookPrice.value;
         const bookDiscription = form.bookDiscription.value;
         const writeBook = form.writeBook.value;
 
 
-        const createBook = { bookName, bookImage, bookWriter, bookAuthor, category_1, category_2, category_3, bookPrice, bookDiscription, writeBook }
+        const createBook = { bookName, bookImage, bookWriter, bookAuthor, category_1, category_2, category_3,category_4, bookPrice, bookDiscription, writeBook }
         console.log(createBook)
 
 
@@ -168,14 +169,16 @@ const CreateAPost = () => {
 
                         </div>
 
-
+                        
 
                         <div>
                             <label className='mt-2'>*ক্যাটাগরি 1:</label>
                             <select className="select select-bordered w-full max-w-xs" name='category_1'>
-                                <option disabled selected>প্রকাশনী নির্বাচন করুন</option>
+                                <option disabled selected>বইয়ের ধরন নির্বাচন করুন</option>
 
-                                <option>Genaral-1</option>
+                                <option>অনুবাদ গ্রন্থ</option>
+                                <option>ইংরেজি বই</option>
+                                <option>ইসলামিক বই</option> 
                             </select>
                         </div>
 
@@ -185,9 +188,11 @@ const CreateAPost = () => {
                         <div>
                             <label className='mt-2'>*ক্যাটাগরি 2:</label>
                             <select className="select select-bordered w-full max-w-xs" name='category_2'>
-                                <option disabled selected>প্রকাশনী নির্বাচন করুন</option>
+                                <option disabled selected>বইয়ের ধরন নির্বাচন করুন</option>
 
-                                <option>Genaral-2</option>
+                                <option>উপন্যাস</option>
+                                <option>গল্প</option>
+                                <option>কবিতা</option>
                             </select>
                         </div>
 
@@ -202,11 +207,26 @@ const CreateAPost = () => {
                             <label className='mt-2'>*ক্যাটাগরি 3:</label>
 
                             <select className="select select-bordered w-full max-w-xs" name='category_3'>
-                                <option disabled selected>প্রকাশনী নির্বাচন করুন</option>
-                                <option>Genaral</option>
+                                <option disabled selected>বইয়ের ধরন নির্বাচন করুন</option>
+                                <option>রোমান্টিক</option>
+                                <option>থ্রিলার</option>
+                                <option>হরর</option> 
+                                <option>সায়েন্স ফিকশন</option> 
+                                <option>মোটিভেশনাল</option> 
                             </select>
 
                         </div>
+                        <div>
+
+                    <label className='mt-2'>*ক্যাটাগরি 4:</label>
+
+                    <select className="select select-bordered w-full max-w-xs" name='category_4'>
+                        <option disabled selected>বইয়ের ধরন নির্বাচন করুন</option>
+                        <option>জনপ্রিয়</option>
+                        <option>সাধারন</option>
+                    </select>
+
+                    </div>
 
 
                         <div>

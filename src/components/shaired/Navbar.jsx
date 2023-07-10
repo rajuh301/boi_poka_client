@@ -1,10 +1,19 @@
-import React, { useContext } from 'react';
-import logo from '../../assets/logo.png'
-import { FaBeer, FaShoppingCart } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
+import logo from '../../assets/logo2.png';
+import { FaUserAlt } from 'react-icons/fa';
+import { GoSearch } from 'react-icons/go';
+import { AiOutlineShoppingCart} from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Navbar = () => {
+    const [search,setSearch]=useState('');
+    const hanlesearch=()=>{
+        fetch(`https://my-app-rho-lilac.vercel.app/search/${search}`)
+        .then(res=>res.json())
+        .then(data=>setAllToys(data))
+
+    }
 
     const { user, logOut } = useContext(AuthContext)
 
@@ -22,7 +31,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-slate-700">
+            <div className="navbar bg-[#201212] pb-5 md:px-24 flex sm:justify-between">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -33,21 +42,21 @@ const Navbar = () => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl"><img className='w-20' src={logo} alt="" /></a>
+                    <a className="btn btn-ghost normal-case text-xl" href='/'><img className='w-48' src={logo} alt="" /></a>
                 </div>
-                <div className="navbar-center hidden lg:flex ">
+                <div className="navbar-center hidden lg:flex mt-4 ">
                     <ul className="menu menu-horizontal px-1">
-                        <li><input className='border w-96' type="text" placeholder='Search' /></li>
+                        <li><input onChange={(e)=>setSearch(e.target.value)} className='border w-96 border-l bg-[#201212] rounded-none text-white px-2 pb-3 h-8 relative' type="text" placeholder='Search by author' /> <button onClick={hanlesearch} className='absolute t-4 end-0 mt-2'><GoSearch className='w-10 h-8 p-1 absolute t-4 end-0 text-black hover:bg-white bg-white rounded-none p-0 outline-none'></GoSearch></button></li>
                         <li tabIndex={0}>
                         </li>
 
                     </ul>
                 </div>
-                <div className="navbar-end gap-5">
+                <div className="navbar-end gap-5 mt-4">
 
                     {
-                        user ? <button onClick={handleLogOut} className="btn">LogOut</button> :
-                            <Link to="/login" className="btn">Login</Link>
+                        user ? <button onClick={handleLogOut} className=" border border-white bg-transparent text-right text-white h-7 w-24 rounded-none pb-1 relative pe-2"> <FaUserAlt className='text-white w-[15px] absolute start-2 top-1.5  '></FaUserAlt>LogOut</button> :
+                            <Link to="/login" className="border border-white bg-transparent text-right text-white h-7 w-24 rounded-none pb-1 relative pe-2"><FaUserAlt className='text-white w-[15px] absolute start-2 top-1.5 '></FaUserAlt> Login</Link>
 
                     }
 
@@ -55,7 +64,7 @@ const Navbar = () => {
 
 
 
-                    <FaShoppingCart className='w-20 h-10 text-white'></FaShoppingCart>
+                    <AiOutlineShoppingCart className='w-24 h-11 text-white'></AiOutlineShoppingCart>
 
                 </div>
             </div>

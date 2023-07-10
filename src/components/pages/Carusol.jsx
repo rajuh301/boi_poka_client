@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Carusol = () => {
     return (
@@ -17,12 +16,8 @@ const Carusol = () => {
                     <img src="https://i0.wp.com/iqrabari.com/wp-content/uploads/2023/05/%E0%A6%87%E0%A6%82%E0%A6%B0%E0%A7%87%E0%A6%9C%E0%A6%BF-%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-%E0%A6%85%E0%A6%A8%E0%A7%81%E0%A6%AC%E0%A6%BE%E0%A6%A6-%E0%A6%AC%E0%A6%87-pdf-Download.jpg" className="w-full md:h-[500px]" />
                 </div>
             </div>
-            <div className="flex justify-center w-full py-2 gap-2">
-                <a href="#item1" className="btn btn-xs">1</a>
-                <a href="#item2" className="btn btn-xs">2</a>
-                <a href="#item3" className="btn btn-xs">3</a>
-                <a href="#item4" className="btn btn-xs">4</a>
-            </div>
+           
+            
         </div>
     );
 };
