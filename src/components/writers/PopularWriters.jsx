@@ -12,8 +12,8 @@ const PopularWriters = ({PopularWriters}) => {
             //         <p className='text-primary'><Link to={`/WriterDetails/${_id}`}><button>Details..</button></Link></p>
             //     </div>
             // </div>
-            <div className="card w-[175px] bg-base-100 ">
-  <img className='h-60 w-48'  src={photo? photo:writerImage} alt="Shoes" />
+            <div className="card md:w-[175px] bg-base-100 ">
+  <img className='md:h-60 h-80 md:w-48 w-96'  src={photo? photo:writerImage} alt="Shoes" />
   
    
     <p className='text-center text-[18px]'>{name}</p>

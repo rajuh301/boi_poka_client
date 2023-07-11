@@ -15,9 +15,7 @@ const Home = () => {
     
     return (
         <div>
-            <SocialBar></SocialBar>
-            <Navbar></Navbar>
-            <SecondNav></SecondNav>
+            
             <Carusol></Carusol>
             <PopularWriterSection></PopularWriterSection>
             <PopularBookSection></PopularBookSection>
