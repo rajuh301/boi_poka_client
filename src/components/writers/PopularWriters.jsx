@@ -1,7 +1,13 @@
+import { Link } from 'react-router-dom';
 import writerImage from '../../assets/book.jpg'
+import { useEffect, useState } from 'react';
 
 const PopularWriters = ({PopularWriters}) => {
-    const {photo,name}=PopularWriters;
+    const {photo,name,_id}=PopularWriters;
+
+
+
+
     return (
             // <div className="w-full bg-white">
             //     <a href="#">
@@ -13,7 +19,7 @@ const PopularWriters = ({PopularWriters}) => {
             //     </div>
             // </div>
             <div className="card md:w-[175px] bg-base-100 ">
-  <img className='md:h-60 h-80 md:w-48 w-96'  src={photo? photo:writerImage} alt="Shoes" />
+  <Link to={`/WriterDetails/${_id}`}><img className='md:h-60 h-80 md:w-48 w-96'  src={photo? photo:writerImage} alt="Shoes" /></Link>
   
    
     <p className='text-center text-[18px]'>{name}</p>

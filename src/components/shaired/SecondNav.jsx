@@ -86,7 +86,7 @@ const SecondNav = () => {
                 <Link>আনুবাদ গ্রন্থ</Link>
                 <Link>ইংরেজি বই</Link>
                 <Link>ইসলামী বই</Link>
-                <Link>অন্যনো</Link>
+                <Link>অন্যান্য</Link>
                 <Link>অডিও</Link>
                 <Link>ভিডিও</Link>
 

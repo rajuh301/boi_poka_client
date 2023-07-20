@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 import PopularBook from '../../../catergory/popularBooks/PopularBook';
 const PopularBookSection = () => {
     const [catergory,setCategory]=useState([]);
+    const [seeMore,setseeMore]=useState(6);
+
+    
+   const loadMore=()=>{
+    setseeMore((prev)=> prev+6);
+   }
     useEffect(()=>{
         fetch("http://localhost:5000/bookpost")
         .then(res=>res.json())
@@ -20,12 +26,12 @@ const PopularBookSection = () => {
             <div className='md:grid grid-cols-6 gap-8 '>
                 
                 {
-                    catergory.slice(0,6).map(bookPopular=><PopularBook key={bookPopular._id} bookPopular={bookPopular} ></PopularBook>)
+                    catergory.slice(0,seeMore).map(bookPopular=><PopularBook key={bookPopular._id} bookPopular={bookPopular} ></PopularBook>)
                 }
                
             </div>
-            <div className='w-32 mx-auto text-center mt-8'>
-                 <Link className='text-center border border-slate-700 p-2 '> See More..</Link>
+            <div className='w-32 ms-auto text-center mt-8'>
+            <button onClick={loadMore} className='text-center font-bold text-blue-400 text-lg '> See More..</button>
                 </div>
             </div>
         </div>
