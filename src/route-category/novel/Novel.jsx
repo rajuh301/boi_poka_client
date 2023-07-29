@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SectionTitle from "../../components/shaired/sectionTitle/SectionTitle";
-import NovelComponent from "../../route-category-components/NovelComponent";
+import CategoryComponent from "../../route-category-components/CategoryComponent";
 import { useEffect } from "react";
 
 const Novel = () => {
@@ -24,10 +24,10 @@ const Novel = () => {
       <div className="border border-slate-700 py-6 px-8">
         <div className="md:grid grid-cols-4 gap-8 ">
           {catergory.slice(0, seeMore).map((bookPopular) => (
-            <NovelComponent
+            <CategoryComponent
               key={bookPopular._id}
               bookPopular={bookPopular}
-            ></NovelComponent>
+            ></CategoryComponent>
           ))}
         </div>
         <div className="w-32 ms-auto text-center mt-8">

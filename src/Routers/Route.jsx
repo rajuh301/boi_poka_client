@@ -25,6 +25,7 @@ import Horror from "../route-category/horor/Horror";
 import ScienceFiction from "../route-category/sceinceFiction/ScienceFiction";
 import Motivational from "../route-category/motivational/Motivational";
 import Classic from "../route-category/classic/Classic";
+import BookDetails from "../BookDetails/BookDetails";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,18 @@ const router = createBrowserRouter([
         element: <WriterDetails></WriterDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/writer/${params.id}`),
+      },
+
+      {
+        path: "/bookDetails",
+        element: <BookDetails></BookDetails>,
+      },
+
+      {
+        path: "/bookDetails/:id",
+        element: <BookDetails></BookDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/bookDetails/${params.id}`),
       },
     ],
   },

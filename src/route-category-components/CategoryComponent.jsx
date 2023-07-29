@@ -1,8 +1,12 @@
-const NovelComponent = ({ bookPopular }) => {
-  const { bookImage, bookName, bookWriter, bookPrice } = bookPopular;
+import { Link } from "react-router-dom";
+
+const CategoryComponent = ({ bookPopular }) => {
+  const { bookImage, bookName, bookWriter, bookPrice, _id } = bookPopular;
   return (
     <div className="card md:w-[200px] bg-base-100 mt-8 ">
-      <img className="h-60 md:w-64" src={bookImage} alt="Shoes" />
+      <Link to={`/bookDetails/${_id}`}>
+        <img className="h-60 md:w-64" src={bookImage} alt="Shoes" />
+      </Link>
 
       <p className="text-center text-[16px] font-bold">{bookName}</p>
       <p className="text-center text-[16px]">{bookWriter}</p>
@@ -16,4 +20,4 @@ const NovelComponent = ({ bookPopular }) => {
   );
 };
 
-export default NovelComponent;
+export default CategoryComponent;

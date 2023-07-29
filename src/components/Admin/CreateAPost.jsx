@@ -39,7 +39,10 @@ const CreateAPost = () => {
     const category_2 = form.category_2.value;
     const category_3 = form.category_3.value;
     const category_4 = form.category_4.value;
-    const bookPrice = form?.bookPrice.value;
+    const oldPrice = form?.oldPrice.value;
+    const newPrice = form?.newPrice.value;
+    const language = form?.language.value;
+    const page = form?.page.value;
     const bookDiscription = form.bookDiscription.value;
     const writeBook = form.writeBook.value;
 
@@ -52,7 +55,10 @@ const CreateAPost = () => {
       category_2,
       category_3,
       category_4,
-      bookPrice,
+      newPrice,
+      oldPrice,
+      language,
+      page,
       bookDiscription,
       writeBook,
     };
@@ -120,16 +126,6 @@ const CreateAPost = () => {
                 type="text"
                 placeholder="বই এর নাম লিখুন"
                 name="bookName"
-                className="input input-bordered input-accent w-full max-w-xs"
-              />
-            </div>
-
-            <div>
-              <label className="mt-2">price:</label>
-              <input
-                type="text"
-                placeholder="price"
-                name="bookPrice"
                 className="input input-bordered input-accent w-full max-w-xs"
               />
             </div>
@@ -229,6 +225,10 @@ const CreateAPost = () => {
                 <option>উপন্যাস</option>
                 <option>গল্প</option>
                 <option>কবিতা</option>
+                <option>প্রবন্ধ</option>
+                <option>আত্মজীবনী</option>
+                <option>ভ্রমন</option>
+                <option>অনুবাদ</option>
               </select>
             </div>
           </div>
@@ -247,7 +247,9 @@ const CreateAPost = () => {
                 <option>থ্রিলার</option>
                 <option>হরর</option>
                 <option>সায়েন্স ফিকশন</option>
-                <option>মোটিভেশনাল</option>
+                <option>কমিক্স</option>
+                <option>কমেডি</option>
+                <option>ক্লাসিক</option>
               </select>
             </div>
             <div>
@@ -263,6 +265,48 @@ const CreateAPost = () => {
                 <option>জনপ্রিয়</option>
                 <option>সাধারন</option>
               </select>
+            </div>
+          </div>
+
+          <div className="flex gap-5 mx-auto mt-10 px-5">
+            <div>
+              <label className="mt-2">ভাষা:</label>
+              <input
+                type="text"
+                placeholder="ভাষা"
+                name="ভাষা"
+                className="input input-bordered input-accent w-full max-w-xs"
+              />
+            </div>
+            <div>
+              <label className="mt-2">পৃষ্ঠা:</label>
+              <input
+                type="text"
+                placeholder="পৃষ্ঠা"
+                name="পৃষ্ঠা"
+                className="input input-bordered input-accent w-full max-w-xs"
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-5 mx-auto mt-10 px-5">
+            <div>
+              <label className="mt-2">পূর্ববর্তী মূল্য:</label>
+              <input
+                type="text"
+                placeholder="পূর্ববর্তী মূল্য"
+                name="পূর্ববর্তী মূল্য"
+                className="input input-bordered input-accent w-full max-w-xs"
+              />
+            </div>
+            <div>
+              <label className="mt-2">বর্তমান মূল্য:</label>
+              <input
+                type="text"
+                placeholder="বর্তমান মূল্য"
+                name="বর্তমান মূল্য"
+                className="input input-bordered input-accent w-full max-w-xs"
+              />
             </div>
           </div>
 

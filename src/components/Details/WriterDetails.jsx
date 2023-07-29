@@ -104,11 +104,14 @@ const WriterDetails = () => {
                   key={index}
                   className="card md:w-[200px] bg-base-100 mt-8 "
                 >
-                  <img
-                    className="h-60 md:w-64"
-                    src={book.bookImage}
-                    alt="Shoes"
-                  />
+                  <Link to={`/bookDetails/${book._id}`}>
+                    {" "}
+                    <img
+                      className="h-60 md:w-64"
+                      src={book.bookImage}
+                      alt="Shoes"
+                    />
+                  </Link>
 
                   <p className="text-center text-[16px] font-bold">
                     {book.bookName}

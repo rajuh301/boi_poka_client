@@ -1,0 +1,192 @@
+[
+  {
+    "title": "Explore Countries",
+    "link": "/country",
+    "children": [
+      {
+        "title": "Study in Australia",
+        "link": "/country/study-in-australia",
+        "grandChld": [
+          {
+            "title": "Australian Intakes",
+            "link": "/country/australian-intakes"
+          },
+          {
+            "title": "Cost of Living in Australia",
+            "link": "/country/cost-of-living-in-australia"
+          }
+        ]
+      },
+      {
+        "title": "Study in Canada",
+        "link": "/country/study-in-canada",
+        "grandChld": [
+          { "title": "Canadian Intakes", "link": "/country/canadian-intakes" },
+          {
+            "title": "Cost of Living in Canada",
+            "link": "/country/cost-of-living-in-canada"
+          }
+        ]
+      },
+      {
+        "title": "Study in Germany",
+        "link": "/country/study-in-germany"
+      },
+
+      {
+        "title": "Study in the Ireland",
+        "link": "/country/study-in-ireland",
+        "grandChld": [
+          { "title": "Ireland Intakes", "link": "/country/ireland-intakes" }
+        ]
+      },
+
+      {
+        "title": "Study in the Japan",
+        "link": "/country/study-in-japan"
+      },
+      {
+        "title": "Study in the UK",
+        "link": "/country/study-in-the-uk",
+        "grandChld": [
+          {
+            "title": "UK Intakes",
+            "link": "/country/uk-intakes"
+          },
+          {
+            "title": "Cost of Living in the UK",
+            "link": "/country/cost-of-living-in-the-uk"
+          }
+        ]
+      },
+      {
+        "title": "Study in the USA",
+        "link": "/country/study-in-the-usa",
+        "grandChld": [
+          {
+            "title": "USA Intakes",
+            "link": "/country/usa-intakes"
+          },
+          {
+            "title": "Cost of Living in the USA",
+            "link": "/country/cost-of-living-in-the-usa"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Student Services",
+    "link": "/services",
+    "isColTwo": true,
+    "isMega": true,
+    "children": [
+      {
+        "title": "Free Education Counselling",
+        "link": "/services/free-education-counselling"
+      },
+      {
+        "title": "Application Process",
+        "link": "/services/application-process"
+      },
+      {
+        "title": "Student Loan & Scholarship",
+        "link": "/services/student-loan-and-scholarship"
+      },
+      {
+        "title": "Visa Application Assistance",
+        "link": "/services/visa-application-assistance"
+      },
+      {
+        "title": "Follow-Up with Parents",
+        "link": "/services/follow-up-with-parents"
+      },
+      {
+        "title": "Pre-Departure Briefing",
+        "link": "/services/pre-departure-briefing"
+      },
+      {
+        "title": "Accommodation Booking",
+        "link": "/services/accommodation-search-and-booking"
+      },
+      {
+        "title": "Student Internship Programs",
+        "link": "/services/student-internship-programs"
+      }
+    ]
+  },
+  {
+    "title": "Scholarships",
+    "link": "/scholarships",
+    "children": [
+      {
+        "title": "Scholarship in Australia",
+        "link": "/scholarships/scholarship-in-australia"
+      },
+      {
+        "title": "Scholarship in Canada",
+        "link": "/scholarships/scholarship-in-canada"
+      },
+      {
+        "title": "Scholarship in Germany",
+        "link": "/scholarships/scholarship-in-germany"
+      },
+      {
+        "title": "Scholarship in Ireland",
+        "link": "/scholarships/scholarship-in-ireland"
+      },
+
+      {
+        "title": "Scholarship in the UK",
+        "link": "/scholarships/scholarship-in-the-uk"
+      },
+      {
+        "title": "Scholarship in the USA",
+        "link": "/scholarships/scholarship-in-the-usa"
+      }
+    ]
+  },
+  {
+    "title": "Courses",
+    "link": "/courses",
+    "isHidden": true,
+    "children": [
+      {
+        "title": "Engineering",
+        "link": "/courses/engineering"
+      },
+      {
+        "title": "Information Technology",
+        "link": "/courses/information-technology"
+      },
+      {
+        "title": "Media & Communication",
+        "link": "/courses/media-and-communication"
+      },
+      {
+        "title": "Arts & Music",
+        "link": "/courses/arts-music"
+      }
+    ]
+  },
+  {
+    "title": "About Us",
+    "link": "/who-we-are",
+    "children": [
+      {
+        "title": "Who We Are",
+        "link": "/who-we-are"
+      },
+
+      {
+        "title": "Awards Recognitions",
+        "link": "/awards"
+      }
+    ]
+  },
+
+  {
+    "title": "Blog",
+    "link": "/blog"
+  }
+]

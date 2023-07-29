@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.has_submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+}
+.submenu {
+  min-width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  top: calc(100% + 3px);
+  left: 0;
+  transition-property: opacity, visibility;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}

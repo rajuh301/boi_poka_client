@@ -70,7 +70,7 @@ const Navbar = () => {
                 onChange={(e) => setSearch(e.target.value)}
                 className="border w-96 border-l bg-[#201212] rounded-none text-white px-2 pb-3 h-8 relative"
                 type="text"
-                placeholder="Search by author"
+                placeholder="Search by author or book name"
               />{" "}
               <button onClick={hanlesearch} className="absolute t-4 end-0 mt-2">
                 <GoSearch className="w-10 h-8 p-1 absolute t-4 end-0 text-black hover:bg-white bg-white rounded-none p-0 outline-none"></GoSearch>
