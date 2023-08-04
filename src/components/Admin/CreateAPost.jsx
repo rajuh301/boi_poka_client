@@ -90,8 +90,8 @@ const CreateAPost = () => {
     <div>
       <Navbar></Navbar>
 
-      <div className="flex">
-        <div className="w-52 block h-full bg-slate-700 text-white px-5 py-64 ">
+      <div className="flex  ">
+        <div className="w-52 block h-full bg-slate-700 text-white px-5 py-64 sticky top-0">
           <Link
             to="/createwriter"
             className="hover:text-green-800 duration-200"
@@ -121,7 +121,7 @@ const CreateAPost = () => {
           </h2>
           <div className="flex gap-5 mx-auto mt-10 justify-center px-5">
             <div>
-              <label className="mt-2">*বই এর নাম:</label>
+              <label className="mt-2">*বই এর নাম : </label>
               <input
                 type="text"
                 placeholder="বই এর নাম লিখুন"
@@ -131,7 +131,7 @@ const CreateAPost = () => {
             </div>
 
             <div>
-              <label className="mt-2">* কভার ইমেজ:</label>
+              <label className="mt-2">* কভার ইমেজ : </label>
 
               <input
                 type="text"
@@ -143,9 +143,9 @@ const CreateAPost = () => {
           </div>
 
           {/* --------------------------------------------------------------------------------------2 */}
-          <div className="flex gap-5 mx-auto justify-center mt-10 px-5">
+          <div className="grid md:grid-cols-2 gap-5 mx-auto justify-center mt-10 px-5">
             <div>
-              <label className="mt-2">*লেখক সিলেক্ট করুন:</label>
+              <label className="mt-2">*লেখক সিলেক্ট করুন : </label>
 
               <select
                 className="select select-bordered w-full max-w-xs"
@@ -168,7 +168,7 @@ const CreateAPost = () => {
             </div>
 
             <div>
-              <label className="mt-2">*প্রকাশনী সিলেক্ট করুন:</label>
+              <label className="mt-2">*প্রকাশনী সিলেক্ট করুন : </label>
 
               <select
                 className="select select-bordered w-full max-w-xs"
@@ -195,9 +195,9 @@ const CreateAPost = () => {
           </div>
 
           {/* ---------------------------------------------------------------------------3 */}
-          <div className="flex gap-5 mx-auto mt-10 px-5">
+          <div className="grid md:grid-cols-2 gap-5 mx-auto mt-10 px-5">
             <div>
-              <label className="mt-2">*ক্যাটাগরি 1:</label>
+              <label className="mt-2">*ক্যাটাগরি 1 :</label>
               <select
                 className="select select-bordered w-full max-w-xs"
                 name="category_1"
@@ -213,7 +213,7 @@ const CreateAPost = () => {
             </div>
 
             <div>
-              <label className="mt-2">*ক্যাটাগরি 2:</label>
+              <label className="mt-2">*ক্যাটাগরি 2 :</label>
               <select
                 className="select select-bordered w-full max-w-xs"
                 name="category_2"
@@ -232,9 +232,9 @@ const CreateAPost = () => {
               </select>
             </div>
           </div>
-          <div className="flex gap-5 mx-auto mt-10 px-5">
+          <div className="grid md:grid-cols-2 gap-5 mx-auto mt-10 px-5">
             <div>
-              <label className="mt-2">*ক্যাটাগরি 3:</label>
+              <label className="mt-2">*ক্যাটাগরি 3 :</label>
 
               <select
                 className="select select-bordered w-full max-w-xs"
@@ -253,7 +253,7 @@ const CreateAPost = () => {
               </select>
             </div>
             <div>
-              <label className="mt-2">*ক্যাটাগরি 4:</label>
+              <label className="mt-2">*ক্যাটাগরি 4 : </label>
 
               <select
                 className="select select-bordered w-full max-w-xs"
@@ -270,67 +270,65 @@ const CreateAPost = () => {
 
           <div className="flex gap-5 mx-auto mt-10 px-5">
             <div>
-              <label className="mt-2">ভাষা:</label>
+              <label className="mt-2">ভাষা : </label>
               <input
                 type="text"
                 placeholder="ভাষা"
-                name="ভাষা"
-                className="input input-bordered input-accent w-full max-w-xs"
+                name="language"
+                className="input input-bordered input-accent w-full "
               />
             </div>
             <div>
-              <label className="mt-2">পৃষ্ঠা:</label>
+              <label className="mt-2">পৃষ্ঠা : </label>
               <input
                 type="text"
                 placeholder="পৃষ্ঠা"
-                name="পৃষ্ঠা"
-                className="input input-bordered input-accent w-full max-w-xs"
+                name="page"
+                className="input input-bordered input-accent w-full "
               />
             </div>
           </div>
 
-          <div className="flex gap-5 mx-auto mt-10 px-5">
+          <div className="flex  gap-5 mx-auto mt-10 px-5">
             <div>
-              <label className="mt-2">পূর্ববর্তী মূল্য:</label>
+              <label className="mt-2">পূর্ববর্তী মূল্য : </label>
               <input
                 type="text"
                 placeholder="পূর্ববর্তী মূল্য"
-                name="পূর্ববর্তী মূল্য"
-                className="input input-bordered input-accent w-full max-w-xs"
+                name="oldPrice"
+                className="input input-bordered input-accent w-full "
               />
             </div>
             <div>
-              <label className="mt-2">বর্তমান মূল্য:</label>
+              <label className="mt-2">বর্তমান মূল্য : </label>
               <input
                 type="text"
                 placeholder="বর্তমান মূল্য"
-                name="বর্তমান মূল্য"
-                className="input input-bordered input-accent w-full max-w-xs"
+                name="newPrice"
+                className="input input-bordered input-accent w-full "
               />
             </div>
           </div>
 
           <div className=" mt-10 px-5">
             <div className=" mt-10">
-              <label className="mt-2">*description:</label> <br />
-              <textarea
-                className="border input-accent w-full"
-                placeholder="বই লিখুন"
-                name="bookDiscription"
-                id=""
-                cols="60"
-                rows="5"
-              ></textarea>
+              <label className="mt-2">*পিডিএফ লিংক : </label> <br />
+              <input
+                className="input input-bordered input-accent w-full"
+                placeholder="পিডিএফ লিংক যুক্ত করুন"
+                name="writeBook"
+                type="text"
+              ></input>
             </div>
           </div>
 
           <div className=" mt-10 px-5">
             <div className=" mt-10">
-              <label className="mt-2">*বই লিখুন:</label> <br />
+              <label className="mt-2">*বই এর বিবরণী : </label> <br />
               <textarea
                 className="border input-accent w-full"
-                placeholder="বই লিখুন"
-                name="writeBook"
+                placeholder="বই এর সংক্ষিপ্ত বিবরণী লিখুন"
+                name="bookDiscription"
                 id=""
                 cols="60"
                 rows="5"

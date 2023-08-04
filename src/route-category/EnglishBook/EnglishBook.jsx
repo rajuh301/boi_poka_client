@@ -1,8 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import CategoryComponent from "../../route-category-components/CategoryComponent";
 import { useEffect } from "react";
-
-const Romantic = () => {
+const EnglishBook = () => {
   const [catergory, setCategory] = useState([]);
   const [seeMore, setseeMore] = useState(6);
 
@@ -14,14 +14,14 @@ const Romantic = () => {
       .then((res) => res.json())
       .then((data) => {
         const popular = data.filter(
-          (books) => books.category_3 === "রোমান্টিক"
+          (books) => books.category_1 === "ইংরেজি বই"
         );
         setCategory(popular);
       });
   }, []);
   return (
     <div className="px-8 my-8">
-      <h1 className="text-center text-3xl mt-8 mb-8">রোমান্টিক বই</h1>
+      <h1 className="text-center text-3xl mt-8 mb-8">ইংরেজি বই</h1>
       <div className="border border-slate-700 py-6 px-8">
         <div className="md:grid grid-cols-4 gap-8 ">
           {catergory.slice(0, seeMore).map((bookPopular) => (
@@ -45,4 +45,4 @@ const Romantic = () => {
   );
 };
 
-export default Romantic;
+export default EnglishBook;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SectionTitle from "../../components/shaired/sectionTitle/SectionTitle";
 import CategoryComponent from "../../route-category-components/CategoryComponent";
 import { useEffect } from "react";
 

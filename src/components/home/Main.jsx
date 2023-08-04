@@ -12,7 +12,6 @@ const Main = () => {
     <div>
       <SocialBar></SocialBar>
       <Navbar></Navbar>
-      <SecondNav></SecondNav>
       <LastNav />
       <Outlet></Outlet>
       <Footer></Footer>

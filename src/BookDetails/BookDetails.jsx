@@ -7,8 +7,14 @@ import { useEffect, useState } from "react";
 const BookDetails = () => {
   const bookDetail = useLoaderData();
   console.log("book details dekhun", bookDetail);
-  const { bookImage, bookName, bookWriter, bookPrice, bookDiscription } =
-    bookDetail;
+  const {
+    bookImage,
+    bookName,
+    bookWriter,
+    newPrice,
+    bookDiscription,
+    writeBook,
+  } = bookDetail;
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
@@ -65,7 +71,10 @@ const BookDetails = () => {
         {/* book details starts */}
         <div className="w-9/12 ">
           <div className="flex gap-x-10">
-            <div className=" w-5/12 bg-[#7c76761c] ps-12 pe-2 pt-12 pb-4">
+            <div className=" w-5/12 bg-[#7c76761c] ps-12 pe-2 pt-12 pb-4 relative">
+              <span className="text-[18px]  font-extrabold border-2 text-[#201212be] border-yellow-600 py-2 px-2 bg-amber-200 absolute right-2">
+                <Link>পড়ে দেখুন</Link>
+              </span>
               <img
                 className="md:w-96 md:h-[450px] shadow-sm"
                 src={bookImage}
@@ -110,7 +119,7 @@ const BookDetails = () => {
                   <p className="py-2"> উপন্যাস</p>
                   <p className="py-2"> বাংলা</p>
                   <p className="py-2">১২০</p>
-                  <p className="py-2">{bookPrice}</p>
+                  <p className="py-2">{newPrice}</p>
                 </div>
               </div>
               {/* cart section */}
@@ -119,7 +128,13 @@ const BookDetails = () => {
                   <a className="me-8 font-extrabold text-[20px]" href="">
                     কার্টে যুক্ত করুন
                   </a>
-                  <a className="me-8 font-extrabold text-[20px]" href="">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    download
+                    className="me-8 font-extrabold text-[20px]"
+                    href={writeBook}
+                  >
                     বইটি কিনুন
                   </a>
                 </h2>
@@ -314,9 +329,9 @@ const BookDetails = () => {
                         {book.bookWriter}
                       </p>
                       <p className="text-center text-[16px]">
-                        <del> TK.120 </del>{" "}
+                        <del> TK.{book.oldPrice}</del>
                         <span className="font-bold ms-2">
-                          TK.{book.bookPrice}
+                          TK.{book.newPrice}
                         </span>
                       </p>
                     </div>
@@ -351,9 +366,9 @@ const BookDetails = () => {
                         {book.bookWriter}
                       </p>
                       <p className="text-center text-[16px]">
-                        <del> TK.120 </del>{" "}
+                        <del> TK.{book.oldPrice} </del>{" "}
                         <span className="font-bold ms-2">
-                          TK.{book.bookPrice}
+                          TK.{book.newPrice}
                         </span>
                       </p>
                     </div>

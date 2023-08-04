@@ -13,15 +13,13 @@ const Classic = () => {
     fetch("http://localhost:5000/bookpost")
       .then((res) => res.json())
       .then((data) => {
-        const popular = data.filter(
-          (books) => books.category_2 === "আত্মজীবনী"
-        );
+        const popular = data.filter((books) => books.category_3 === "ক্লাসিক");
         setCategory(popular);
       });
   }, []);
   return (
     <div className="px-8 my-8">
-      <h1 className="text-center text-3xl mt-8 mb-8">আত্মজীবনী</h1>
+      <h1 className="text-center text-3xl mt-8 mb-8">ক্লাসিক</h1>
       <div className="border border-slate-700 py-6 px-8">
         <div className="md:grid grid-cols-4 gap-8 ">
           {catergory.slice(0, seeMore).map((bookPopular) => (

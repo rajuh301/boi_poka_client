@@ -1,15 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../components/shaired/Navbar";
-import SecondNav from "../components/shaired/SecondNav";
 import SocialBar from "../components/shaired/socialBar/SocialBar";
 import Footer from "../components/shaired/Footer";
+import LastNav from "../components/shaired/Navlast";
 
 const BookLayout = () => {
   return (
     <div>
       <SocialBar></SocialBar>
       <Navbar></Navbar>
-      <SecondNav></SecondNav>
+      <LastNav />
 
       <div className="flex flex-col md:flex-row gap-x-8 p-8   ">
         <div className="md:w-[150px] lg:w-[150px]  ps-1 md:text-start text-center my-4">

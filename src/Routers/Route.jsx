@@ -26,6 +26,9 @@ import ScienceFiction from "../route-category/sceinceFiction/ScienceFiction";
 import Motivational from "../route-category/motivational/Motivational";
 import Classic from "../route-category/classic/Classic";
 import BookDetails from "../BookDetails/BookDetails";
+import IslamicBook from "../route-category/IslamicBook/IslamicBook";
+import EnglishBook from "../route-category/EnglishBook/EnglishBook";
+import Comedy from "../route-category/comedy/Comedy";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +69,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <BookLayout></BookLayout>,
     children: [
+      {
+        path: "/islamic",
+        element: <IslamicBook />,
+      },
+      {
+        path: "/english",
+        element: <EnglishBook />,
+      },
       {
         path: "/novel",
         element: <Novel></Novel>,
@@ -121,7 +132,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/comedy",
-        element: <Poem></Poem>,
+        element: <Comedy />,
       },
       {
         path: "/classic",
