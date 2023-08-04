@@ -13,7 +13,7 @@ const Horror = () => {
     fetch("http://localhost:5000/bookpost")
       .then((res) => res.json())
       .then((data) => {
-        const popular = data.filter((books) => books.category_1 === "হরর");
+        const popular = data.filter((books) => books.category_3 === "হরর");
         setCategory(popular);
       });
   }, []);
