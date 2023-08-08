@@ -82,7 +82,7 @@ const BookDetails = () => {
     if (isProductExists) {
       Swal.fire({
         title: 'Error',
-        text: 'This product already exists in your cart.',
+        text: 'This book already exists in your cart.',
         icon: 'error',
         confirmButtonText: 'Close',
       });
@@ -92,7 +92,7 @@ const BookDetails = () => {
 
       Swal.fire({
         title: 'Added to Cart!',
-        text: 'This product has been added to your cart.',
+        text: 'This book has been added to your cart.',
         icon: 'success',
         confirmButtonText: 'Close',
       });

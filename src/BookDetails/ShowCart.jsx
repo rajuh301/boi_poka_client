@@ -34,7 +34,7 @@ const ShowCart = ({ cart }) => {
         Swal.fire({
             icon: 'success',
             title: 'Item Deleted',
-            text: 'The item has been successfully deleted from your cart.',
+            text: 'The Book has been successfully deleted from your cart.',
 
         });
     };
@@ -45,17 +45,31 @@ const ShowCart = ({ cart }) => {
 
 
 
-        <div className='my-5 gap-5'>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img className='w-full h-72' src={cart.data.bookImage} alt="Shoes" /></figure>
+        <div className=''>
+
+
+
+
+            <div className="card w-72 mt-5 p-5 bg-yellow-400 border rounded-lg shadow-xl">
+                <figure><img className='w-72 h-72' src={cart.data.bookImage} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{cart.data.bookName}</h2>
-                    <div className="card-actions justify-end ">
-                        <button onClick={() => handleDelete(cart.data)} className="btn btn-primary hover:bg-red-700">মুছে ফেলুন</button>
-                        <a href={cart.data.writeBook} className="btn btn-primary hover:bg-green-800">বইটি কিনুন</a>
+                    <h2 className="card-title">
+                        {cart.data.bookName}
+                    </h2>
+                   
+                    <div className="card-actions justify-end">
+                        <div className="flex justify-center gap-5 ">
+                            <button onClick={() => handleDelete(cart.data)} className="btn btn-primary hover:bg-red-700">মুছে ফেলুন</button>
+                            <a href={cart.data.writeBook} className="btn btn-primary hover:bg-green-800">বইটি কিনুন</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
 
         </div>
     );

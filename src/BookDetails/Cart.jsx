@@ -20,7 +20,7 @@ const Cart = () => {
     return (
         <div>
             <Navbar />
-            <div className='md:grid grid-cols-3 gap-5'>
+            <div className='md:grid grid-cols-3 md:mx-20 mx-10'>
                 {
                     cartItems?.map(cart => <ShowCart
                         key={cart._id}
