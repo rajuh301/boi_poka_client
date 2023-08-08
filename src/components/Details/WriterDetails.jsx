@@ -7,7 +7,7 @@ const WriterDetails = () => {
   const [data, setData] = useState([]);
   console.log("book data ", data);
   useEffect(() => {
-    fetch(`http://localhost:5000/bookpost/${name}`)
+    fetch(`https://boi-poka-server-chi.vercel.app/bookpost/${name}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [name]);

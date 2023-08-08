@@ -20,10 +20,19 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
   // console.log(user)
+
+
+
+
+  // --------------------------- localStorage
+
+  const localStorageData = JSON.parse(localStorage.getItem('cartItems'))
+
+  // --------------------------- localStorage
 
   return (
     <div>
@@ -99,7 +108,14 @@ const Navbar = () => {
             </Link>
           )}
 
-          <AiOutlineShoppingCart className="w-24 h-11 text-white"></AiOutlineShoppingCart>
+          <div className="flex">
+            <Link to="/cart">
+              <span className="indicator-item badge badge-secondary absolute right-24">{localStorageData?.length}</span>
+              <AiOutlineShoppingCart className="w-24 h-11 text-white"></AiOutlineShoppingCart>
+            </Link>
+          </div>
+
+
         </div>
       </div>
       <hr />

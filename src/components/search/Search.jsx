@@ -12,7 +12,7 @@ const Search = () => {
   const [data, setData] = useState([]);
   console.log("book data ", data);
   useEffect(() => {
-    fetch(`http://localhost:5000/search/${searchTerm}`)
+    fetch(`https://boi-poka-server-chi.vercel.app/search/${searchTerm}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [searchTerm]);

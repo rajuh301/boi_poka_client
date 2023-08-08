@@ -20,7 +20,7 @@ const CreateAuthor = () => {
     const addWriter = { name, bio };
     console.log(addWriter);
 
-    fetch("http://localhost:5000/author", {
+    fetch("https://boi-poka-server-chi.vercel.app/author", {
       method: "POST",
       headers: {
         "content-type": "application/json",

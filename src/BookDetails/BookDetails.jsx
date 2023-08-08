@@ -3,6 +3,7 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { Link, useLoaderData } from "react-router-dom";
 import { Tabs } from "antd";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const BookDetails = () => {
   const bookDetail = useLoaderData();
@@ -23,7 +24,7 @@ const BookDetails = () => {
 
   //bio of this writer
   useEffect(() => {
-    fetch(`http://localhost:5000/writers/${bookWriter}`)
+    fetch(`https://boi-poka-server-chi.vercel.app/writers/${bookWriter}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [bookWriter]);
@@ -31,7 +32,7 @@ const BookDetails = () => {
   // popular category book of this writer start
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookWriter/${bookWriter}`)
+    fetch(`https://boi-poka-server-chi.vercel.app/bookWriter/${bookWriter}`)
       .then((res) => res.json())
       .then((data2) => setData2(data2));
   }, [bookWriter]);
@@ -39,7 +40,7 @@ const BookDetails = () => {
   // simple category book of this writer start
 
   useEffect(() => {
-    fetch(`http://localhost:5000/simpleBookWriter/${bookWriter}`)
+    fetch(`https://boi-poka-server-chi.vercel.app/simpleBookWriter/${bookWriter}`)
       .then((res) => res.json())
       .then((data3) => setData3(data3));
   }, [bookWriter]);
@@ -65,15 +66,61 @@ const BookDetails = () => {
     },
   ];
 
+
+
+  // -------------- Add to cart---------------
+
+  const handleAddtoCart = (bookDetail) => {
+    const cartItem = {
+      data: bookDetail, // Make sure to match the structure with what's used in other parts of your code
+    };
+
+    const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    const isProductExists = existingCartItems.some(item => item.data._id === cartItem.data._id);
+
+    if (isProductExists) {
+      Swal.fire({
+        title: 'Error',
+        text: 'This product already exists in your cart.',
+        icon: 'error',
+        confirmButtonText: 'Close',
+      });
+    } else {
+      existingCartItems.push(cartItem);
+      localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+
+      Swal.fire({
+        title: 'Added to Cart!',
+        text: 'This product has been added to your cart.',
+        icon: 'success',
+        confirmButtonText: 'Close',
+      });
+    }
+  };
+
+
+
+  // -------------- Add to cart---------------
+
+
+
+
+
+
+
+
+
+
   return (
     <div>
       <div className="flex justify-between  ">
         {/* book details starts */}
-        <div className="w-9/12 ">
+        <div className="md:w-9/12 ">
           <div className="flex gap-x-10">
             <div className=" w-5/12 bg-[#7c76761c] ps-12 pe-2 pt-12 pb-4 relative">
               <span className="text-[18px]  font-extrabold border-2 text-[#201212be] border-yellow-600 py-2 px-2 bg-amber-200 absolute right-2">
-                <Link>পড়ে দেখুন</Link>
+                <Link to={`/pdfviwer/${writeBook}`}>পড়ে দেখুন</Link>
               </span>
               <img
                 className="md:w-96 md:h-[450px] shadow-sm"
@@ -84,7 +131,7 @@ const BookDetails = () => {
                 <p className="me-2"> Share On : </p>
                 <p>
                   <a href="">
-                    <FaFacebook className="w-[23px] h-[23px] text-[#355496]   me-1"></FaFacebook>
+                    <FaFacebook className="w-[23px] h-[23px] text-[#355496] me-1"></FaFacebook>
                   </a>
                 </p>
                 <p>
@@ -104,7 +151,7 @@ const BookDetails = () => {
                 </p>
               </div>
             </div>
-            <div className="w-7/12 mt-4">
+            <div className="md:w-7/12 mt-4">
               <h1 className="text-2xl  font-extrabold pt-8 pb-4">{bookName}</h1>
               <div className="flex gap-x-8 text-[18px] ">
                 <div>
@@ -125,9 +172,9 @@ const BookDetails = () => {
               {/* cart section */}
               <div className="mt-8">
                 <h2>
-                  <a className="me-8 font-extrabold text-[20px]" href="">
+                  <button onClick={() => handleAddtoCart(bookDetail)} className="me-8 font-extrabold text-[20px]" href="">
                     কার্টে যুক্ত করুন
-                  </a>
+                  </button>
                   <a
                     target="_blank"
                     rel="noreferrer"
@@ -218,6 +265,7 @@ const BookDetails = () => {
             </div>
           </div>
         </div> */}
+
         <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full ">
           <h1 className="text-center font-bold text-2xl text-black pb-4">
             সাইডবার

@@ -22,7 +22,7 @@ const CreateWriter = () => {
     const addWriter = { name, category, photo, bio };
     console.log(addWriter);
 
-    fetch("http://localhost:5000/writer", {
+    fetch("https://boi-poka-server-chi.vercel.app/writer", {
       method: "POST",
       headers: {
         "content-type": "application/json",

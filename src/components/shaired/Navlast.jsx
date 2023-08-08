@@ -14,13 +14,13 @@ const LastNav = () => {
   //   setseeMore((prev)=> prev+4);
   //  }
   useEffect(() => {
-    fetch("http://localhost:5000/writer")
+    fetch("https://boi-poka-server-chi.vercel.app/writer")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/author")
+    fetch("https://boi-poka-server-chi.vercel.app/author")
       .then((res) => res.json())
       .then((data) => setPublishers(data));
   }, []);
