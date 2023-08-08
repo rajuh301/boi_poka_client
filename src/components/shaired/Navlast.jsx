@@ -113,6 +113,7 @@ const LastNav = () => {
               </div>
             </li>
             <li>
+              {/* audio */}
               <div className="flex items-center gap-2 cursor-pointer px-2 py-6 hover:text-inherit text-white hover:text-white">
                 <span className="2lg:text-[15px] xl:text-base">
                   <Link>অডিও</Link>
