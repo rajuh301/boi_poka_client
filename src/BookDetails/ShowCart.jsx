@@ -50,7 +50,7 @@ const ShowCart = ({ cart }) => {
 
 
 
-            <div className="card w-72 mt-5 p-5 bg-yellow-400 border rounded-lg shadow-xl">
+            <div className="card w-72 mt-5 p-5 bg-green-400 border rounded-lg shadow-xl">
                 <figure><img className='w-72 h-72' src={cart.data.bookImage} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
