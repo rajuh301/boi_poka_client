@@ -13,8 +13,8 @@ const WriterDetails = () => {
   }, [name]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-x-8 p-8   ">
-      <div className="md:w-[100px] lg:w-[100px]  ps-2 md:text-start text-center my-4">
+    <div className="flex flex-col md:flex-row gap-x-8 md:p-8  lg:p-8  ">
+      <div className="md:w-[150px] lg:w-[150px]  ps-2 md:text-start text-center my-4">
         <h5 className="font-bold text-[20px]">ক্যাটেগরি</h5>
         <div className="mb-12">
           <ul className="">

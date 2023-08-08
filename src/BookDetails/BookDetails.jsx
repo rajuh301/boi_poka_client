@@ -67,9 +67,9 @@ const BookDetails = () => {
 
   return (
     <div>
-      <div className="flex justify-between  ">
+      <div className="flex  flex-wrap  ">
         {/* book details starts */}
-        <div className="w-9/12 ">
+        <div className="w-9/12 md-lg:w-full ">
           <div className="flex gap-x-10">
             <div className=" w-5/12 bg-[#7c76761c] ps-12 pe-2 pt-12 pb-4 relative">
               <span className="text-[18px]  font-extrabold border-2 text-[#201212be] border-yellow-600 py-2 px-2 bg-amber-200 absolute right-2">
@@ -218,7 +218,7 @@ const BookDetails = () => {
             </div>
           </div>
         </div> */}
-        <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full ">
+        <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full md-lg:w-full ">
           <h1 className="text-center font-bold text-2xl text-black pb-4">
             সাইডবার
           </h1>
@@ -295,8 +295,8 @@ const BookDetails = () => {
       </div>
       {/* book section */}
       <div>
-        <div className="flex justify-between mt-16">
-          <div className="w-9/12 ">
+        <div className="flex flex-wrap mt-16">
+          <div className="w-9/12  ">
             <div className=" mx-2 p-8 ">
               {/* summary of book and writer with tab */}
               <div className="w-full bg-[#7c76761c] px-4 mb-8">
@@ -380,7 +380,7 @@ const BookDetails = () => {
           </div>
 
           {/* bottom sidebar start */}
-          <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full mt-8">
+          <div className="w-3/12  bg-[#B7B376] py-2 px-2 md:h-full mt-8">
             <h1 className="text-center font-bold text-2xl text-black pb-4">
               সাইডবার
             </h1>

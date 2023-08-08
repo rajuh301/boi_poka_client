@@ -8,6 +8,9 @@ import { useEffect } from "react";
 const LastNav = () => {
   const [catergory, setCategory] = useState([]);
   const [publishers, setPublishers] = useState([]);
+
+  const [toggle, setToggle] = useState(false);
+  const [toggle2, setToggle2] = useState(false);
   //   const [seeMore,setseeMore]=useState(6);
 
   //  const loadMore=()=>{
@@ -125,6 +128,132 @@ const LastNav = () => {
             </li>
           </ul>
         </nav>
+      </div>
+      {/* mobile version */}
+      <div className="navbar bg-[#201212] lg:hidden flex justify-center ">
+        <div className="navbar-center ">
+          <div className="dropdown ">
+            <label tabIndex={0} className="btn  lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7 text-[#201212] "
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#201212] rounded-box w-52 text-white"
+            >
+              <li className="text-white">
+                <span
+                  className="2lg:text-[15px] xl:text-base hover:text-white"
+                  onClick={() => {
+                    setToggle(!toggle);
+                  }}
+                >
+                  লেখক <FiChevronDown />
+                </span>
+                {toggle && (
+                  <ul className="text-white">
+                    {catergory?.map((writers) => {
+                      return (
+                        <li key={writers._id}>
+                          <Link
+                            to="#"
+                            className="block p-1 px-8 hover:text-inherit text-white font-normal  translate-x-[-30px] "
+                          >
+                            <Link to={`/WriterDetails/${writers._id}`}>
+                              <span>{writers.name}</span>
+                            </Link>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+              <li className="text-white">
+                <span
+                  className="2lg:text-[15px] xl:text-base hover:text-white"
+                  onClick={() => {
+                    setToggle2(!toggle2);
+                  }}
+                >
+                  প্রকাশনী <FiChevronDown />
+                </span>
+                {toggle2 && (
+                  <ul className="text-white">
+                    {publishers?.map((publisher) => {
+                      return (
+                        <li key={publisher._id}>
+                          <Link
+                            to="#"
+                            className="block p-1 px-8 hover:text-inherit text-white font-normal  translate-x-[-30px] "
+                          >
+                            <Link to={`/WriterDetails/${publisher._id}`}>
+                              <span>{publisher.name}</span>
+                            </Link>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+              <li>
+                <div className="flex items-center gap-2 cursor-pointer px-2 py-2 hover:text-inherit text-white hover:text-white">
+                  <span className="2lg:text-[15px] xl:text-base">
+                    <Link to="/translated">অনুবাদ গ্রন্থ</Link>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 cursor-pointer px-2 py-2 hover:text-inherit text-white hover:text-white">
+                  <span className="2lg:text-[15px] xl:text-base">
+                    <Link to="/english">ইংরেজি বই</Link>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 cursor-pointer px-2 py-2 hover:text-inherit text-white hover:text-white">
+                  <span className="2lg:text-[15px] xl:text-base">
+                    <Link to="/islamic">ইসলামী বই</Link>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 cursor-pointer px-2 py-2 hover:text-inherit text-white hover:text-white">
+                  <span className="2lg:text-[15px] xl:text-base">
+                    <Link>অন্যান্য</Link>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 cursor-pointer px-2 py-2 hover:text-inherit text-white hover:text-white">
+                  <span className="2lg:text-[15px] xl:text-base">
+                    <Link>অডিও</Link>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-center gap-2 cursor-pointer px-2 py-2 hover:text-inherit text-white hover:text-white">
+                  <span className="2lg:text-[15px] xl:text-base">
+                    <Link>ভিডিও</Link>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
   );

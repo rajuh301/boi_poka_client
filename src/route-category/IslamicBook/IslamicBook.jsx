@@ -14,16 +14,16 @@ const IslamicBook = () => {
       .then((res) => res.json())
       .then((data) => {
         const popular = data.filter(
-          (books) => books.category_1 === "মোটিভেশনাল"
+          (books) => books.category_1 === "ইসলামিক বই"
         );
         setCategory(popular);
       });
   }, []);
   return (
     <div className="px-8 my-8">
-      <h1 className="text-center text-3xl mt-8 mb-8">মোটিভেশনাল বই</h1>
+      <h1 className="text-center text-3xl mt-8 mb-8">ইসলামিক বই</h1>
       <div className="border border-slate-700 py-6 px-8">
-        <div className="md:grid grid-cols-4 gap-8 ">
+        <div className="grid md:grid-cols-4 gap-8 ">
           {catergory.slice(0, seeMore).map((bookPopular) => (
             <CategoryComponent
               key={bookPopular._id}
