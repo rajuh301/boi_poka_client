@@ -131,7 +131,7 @@ const LastNav = () => {
         </nav>
       </div>
       {/* mobile version */}
-      <div className="navbar bg-[#201212] lg:hidden flex justify-center ">
+      <div className="navbar bg-[#201212] lg:hidden ">
         <div className="navbar-center ">
           <div className="dropdown ">
             <label tabIndex={0} className="btn  lg:hidden">
