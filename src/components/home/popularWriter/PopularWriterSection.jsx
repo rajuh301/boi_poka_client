@@ -13,7 +13,7 @@ const PopularWriterSection = () => {
     setseeMore((prev)=> prev+4);
    }
     useEffect(()=>{
-        fetch("https://boi-poka-server-chi.vercel.app/writer")
+        fetch("http://localhost:5000/writer")
         .then(res=>res.json())
         .then(data=>{
             const popular=data.filter(writers=>writers.category==='জনপ্ৰিয়');

@@ -9,13 +9,13 @@ const CreateAPost = () => {
   const [author, setAuthor] = useState(); // Changed initial state to an empty object
 
   useEffect(() => {
-    fetch("https://boi-poka-server-chi.vercel.app/writer")
+    fetch("http://localhost:5000/writer")
       .then((res) => res.json())
       .then((data) => setWriter(data));
   }, []);
 
   useEffect(() => {
-    fetch("https://boi-poka-server-chi.vercel.app/author")
+    fetch("http://localhost:5000/author")
       .then((res) => res.json())
       .then((data) => setAuthor(data));
   }, []);
@@ -64,7 +64,7 @@ const CreateAPost = () => {
     };
     console.log(createBook);
 
-    fetch("https://boi-poka-server-chi.vercel.app/bookpost", {
+    fetch("http://localhost:5000/bookpost", {
       method: "POST",
       headers: {
         "content-type": "application/json",

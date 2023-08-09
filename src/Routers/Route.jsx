@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         path: "/WriterDetails/:id",
         element: <WriterDetails></WriterDetails>,
         loader: ({ params }) =>
-          fetch(`https://boi-poka-server-chi.vercel.app/writer/${params.id}`),
+          fetch(`http://localhost:5000/writer/${params.id}`),
       },
 
       {
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         path: "/bookDetails/:id",
         element: <BookDetails></BookDetails>,
         loader: ({ params }) =>
-          fetch(`https://boi-poka-server-chi.vercel.app/bookDetails/${params.id}`),
+          fetch(`http://localhost:5000/bookDetails/${params.id}`),
       },
     ],
   },

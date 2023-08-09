@@ -6,7 +6,7 @@ const SecondNav = () => {
     const [writer, setWriter] = useState()
 
     useEffect(() => {
-        fetch('https://boi-poka-server-chi.vercel.app/writer')
+        fetch('http://localhost:5000/writer')
             .then(res => res.json())
             .then(data => setWriter(data))
     }, [])
@@ -16,7 +16,7 @@ const SecondNav = () => {
 
     const [books, setBooks] = useState()
     useEffect(() => {
-        fetch('https://boi-poka-server-chi.vercel.app/bookpost')
+        fetch('http://localhost:5000/bookpost')
             .then(res => res.json())
             .then(data => setBooks(data))
     }, [])

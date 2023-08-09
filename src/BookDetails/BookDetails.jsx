@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { Tabs } from "antd";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import PrivateRoute from "../Routers/PrivateRoute";
 
 const BookDetails = () => {
   const bookDetail = useLoaderData();
@@ -24,7 +25,7 @@ const BookDetails = () => {
 
   //bio of this writer
   useEffect(() => {
-    fetch(`https://boi-poka-server-chi.vercel.app/writers/${bookWriter}`)
+    fetch(`http://localhost:5000/writers/${bookWriter}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [bookWriter]);
@@ -32,7 +33,7 @@ const BookDetails = () => {
   // popular category book of this writer start
 
   useEffect(() => {
-    fetch(`https://boi-poka-server-chi.vercel.app/bookWriter/${bookWriter}`)
+    fetch(`http://localhost:5000/bookWriter/${bookWriter}`)
       .then((res) => res.json())
       .then((data2) => setData2(data2));
   }, [bookWriter]);
@@ -40,7 +41,7 @@ const BookDetails = () => {
   // simple category book of this writer start
 
   useEffect(() => {
-    fetch(`https://boi-poka-server-chi.vercel.app/simpleBookWriter/${bookWriter}`)
+    fetch(`http://localhost:5000/simpleBookWriter/${bookWriter}`)
       .then((res) => res.json())
       .then((data3) => setData3(data3));
   }, [bookWriter]);
@@ -175,96 +176,26 @@ const BookDetails = () => {
                   <button onClick={() => handleAddtoCart(bookDetail)} className="me-8 font-extrabold text-[20px]" href="">
                     কার্টে যুক্ত করুন
                   </button>
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    download
-                    className="me-8 font-extrabold text-[20px]"
-                    href={writeBook}
-                  >
-                    বইটি কিনুন
-                  </a>
+
+                  <PrivateRoute>
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      download
+                      className="me-8 font-extrabold text-[20px]"
+                      href={writeBook}
+                    >
+                      বইটি কিনুন
+                    </a>
+
+                  </PrivateRoute>
+
+
                 </h2>
               </div>
             </div>
           </div>
         </div>
-
-        {/* writer details start */}
-        {/* <div className="w-3/12 bg-[#B7B376] py-4 px-2">
-          <h1 className="text-center font-bold text-2xl text-black pb-4">
-            সাইডবার
-          </h1>
-          <div className=" bg-white py-4 px-6 ">
-            <div className="flex items-center gap-x-4 p-4 mb-2 shadow-lg">
-              <div>
-                <img
-                  className="w-[75px] h-[100px]"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ova1iW7vR6xu63Uvunucf-m7SHC_Lky2Kg&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="text-[14px]">
-                <p>দূর নীলিমায়</p>
-                <p>আবু তাহের মিয়া</p>
-                <p>
-                  <del>TK.120</del> TK.150
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-x-4 p-4 mb-2 shadow-lg">
-              <div>
-                <img
-                  className="w-[75px] h-[100px]"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ova1iW7vR6xu63Uvunucf-m7SHC_Lky2Kg&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="text-[14px]">
-                <p>দূর নীলিমায়</p>
-                <p>আবু তাহের মিয়া</p>
-                <p>
-                  <del>TK.120</del> TK.150
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-x-4 p-4 mb-2 shadow-lg">
-              <div>
-                <img
-                  className="w-[75px] h-[100px]"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ova1iW7vR6xu63Uvunucf-m7SHC_Lky2Kg&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="text-[14px]">
-                <p>দূর নীলিমায়</p>
-                <p>আবু তাহের মিয়া</p>
-                <p>
-                  <del>TK.120</del> TK.150
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-x-4 p-4 mb-2 shadow-lg">
-              <div>
-                <img
-                  className="w-[75px] h-[100px]"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ova1iW7vR6xu63Uvunucf-m7SHC_Lky2Kg&usqp=CAU"
-                  alt=""
-                />
-              </div>
-              <div className="text-[14px]">
-                <p>দূর নীলিমায়</p>
-                <p>আবু তাহের মিয়া</p>
-                <p>
-                  <del>TK.120</del> TK.150
-                </p>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full ">
           <h1 className="text-center font-bold text-2xl text-black pb-4">

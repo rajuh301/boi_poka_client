@@ -31,7 +31,7 @@ const Register = () => {
                 console.log(user)
 
                 const saveUser = { name: name, email: email }
-                fetch('https://boi-poka-server-chi.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

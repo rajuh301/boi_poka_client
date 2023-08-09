@@ -10,7 +10,7 @@ const EnglishBook = () => {
     setseeMore((prev) => prev + 6);
   };
   useEffect(() => {
-    fetch("https://boi-poka-server-chi.vercel.app/bookpost")
+    fetch("http://localhost:5000/bookpost")
       .then((res) => res.json())
       .then((data) => {
         const popular = data.filter(

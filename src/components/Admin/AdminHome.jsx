@@ -12,7 +12,7 @@ const AdminHome = () => {
 
 
     useEffect(() => {
-        fetch('https://boi-poka-server-chi.vercel.app/users')
+        fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
@@ -20,21 +20,21 @@ const AdminHome = () => {
 
 
     useEffect(() => {
-        fetch('https://boi-poka-server-chi.vercel.app/bookpost')
+        fetch('http://localhost:5000/bookpost')
             .then(res => res.json())
             .then(data => setBooks(data))
     }, [])
 
 
     useEffect(() => {
-        fetch('https://boi-poka-server-chi.vercel.app/writer')
+        fetch('http://localhost:5000/writer')
             .then(res => res.json())
             .then(data => setWriter(data))
     }, [])
 
 
     useEffect(() => {
-        fetch('https://boi-poka-server-chi.vercel.app/author')
+        fetch('http://localhost:5000/author')
             .then(res => res.json())
             .then(data => setAuthor(data))
     }, [])
