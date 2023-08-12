@@ -41,7 +41,7 @@ const CreateWriter = () => {
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
-                  title: 'Class added successfully',
+                  title: 'Writer added successfully',
                   showConfirmButton: false,
                   timer: 1500,
                 });
@@ -129,7 +129,7 @@ const CreateWriter = () => {
                 <span className="label-text font-semibold">লেখক এর জীবন বৃত্তান্ত দিন*</span>
               </label>
               <input type="text" placeholder="লেখক এর নাম"
-                {...register("bio", { required: true, maxLength: 250 })}
+                {...register("bio", { required: true, maxLength: 1200 })}
                 className="input input-bordered w-full " />
             </div>
 

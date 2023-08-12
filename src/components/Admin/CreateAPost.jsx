@@ -3,10 +3,15 @@ import Navbar from "../shaired/Navbar";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../shaired/Footer";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+const img_hosting_token = import.meta.env.VITE_Image_Uplode_token;
+
 
 const CreateAPost = () => {
   const [writer, setWriter] = useState(); // Changed initial state to an empty object
   const [author, setAuthor] = useState(); // Changed initial state to an empty object
+
 
   useEffect(() => {
     fetch("http://localhost:5000/writer")
@@ -27,65 +32,69 @@ const CreateAPost = () => {
 
   const from = location.state?.from?.pathname || "/admin";
 
-  const createPost = (event) => {
-    event.preventDefault();
 
-    const form = event.target;
-    const bookName = form?.bookName.value;
-    const bookImage = form?.bookImage.value;
-    const bookWriter = form?.bookWriter.value;
-    const bookAuthor = form?.bookAuthor.value;
-    const category_1 = form?.category_1.value;
-    const category_2 = form.category_2.value;
-    const category_3 = form.category_3.value;
-    const category_4 = form.category_4.value;
-    const oldPrice = form?.oldPrice.value;
-    const newPrice = form?.newPrice.value;
-    const language = form?.language.value;
-    const page = form?.page.value;
-    const bookDiscription = form.bookDiscription.value;
-    const writeBook = form.writeBook.value;
+  const [axiosSecure] = useAxiosSecure();
+  const { register, handleSubmit, reset } = useForm();
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
-    const createBook = {
-      bookName,
-      bookImage,
-      bookWriter,
-      bookAuthor,
-      category_1,
-      category_2,
-      category_3,
-      category_4,
-      newPrice,
-      oldPrice,
-      language,
-      page,
-      bookDiscription,
-      writeBook,
-    };
-    console.log(createBook);
 
-    fetch("http://localhost:5000/bookpost", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
 
-      body: JSON.stringify(createBook),
-    });
+  const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append('image', data.image[0]);
 
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Your work has been saved",
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    fetch(img_hosting_url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        if (imgResponse.success) {
+          const imgURL = imgResponse.data.display_url;
 
-    navigate(from, { replace: true });
-  };
 
-  // -------------------------- Create Post
+          const {
+            bookName,
+            bookWriter,
+            bookAuthor,
+            category_1,
+            category_2,
+            category_3,
+            category_4,
+            newPrice,
+            oldPrice,
+            language,
+            page,
+            bookDiscription,
+            writeBook,
+          } = data
 
+
+
+
+
+          const newItem = { bookName, bookImage: imgURL, bookWriter, bookAuthor, category_1, category_2, category_3, category_4, rating:1, newPrice, oldPrice, language, page, bookDiscription, writeBook };
+          console.log(newItem)
+          axiosSecure.post('/bookpost', newItem)
+            .then((data) => {
+              if (data.data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Book added successfully',
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+
+                navigate("/admin", { replace: true });
+              }
+            });
+        }
+      });
+  }
+
+  // ------------------------------------------ update System----------
   return (
     <div>
       <Navbar></Navbar>
@@ -115,7 +124,7 @@ const CreateAPost = () => {
 
         {/* ------------------ Content */}
 
-        <form className="md:w-[700px] mx-auto mb-8" onSubmit={createPost}>
+        <form className="md:w-[700px] mx-auto mb-8" onSubmit={handleSubmit(onSubmit)}>
           <h2 className="font-bold text-3xl text-center mt-8 border-b-2 w-72 pb-2 mx-auto">
             বই পোস্ট করুন{" "}
           </h2>
@@ -125,21 +134,20 @@ const CreateAPost = () => {
               <input
                 type="text"
                 placeholder="বই এর নাম লিখুন"
-                name="bookName"
+                {...register("bookName", { required: true, maxLength: 120 })}
                 className="input input-bordered input-accent w-full max-w-xs"
               />
             </div>
 
-            <div>
-              <label className="mt-2">* কভার ইমেজ : </label>
 
-              <input
-                type="text"
-                placeholder="লিংক দিন"
-                name="bookImage"
-                className="input input-bordered input-accent w-full max-w-xs"
-              />
+            <div className="form-control w-full my-4">
+              <label className="label">
+                <span className="label-text">কভার ইমেজ :</span>
+              </label>
+              <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
             </div>
+
+
           </div>
 
           {/* --------------------------------------------------------------------------------------2 */}
@@ -147,9 +155,9 @@ const CreateAPost = () => {
             <div>
               <label className="mt-2">*লেখক সিলেক্ট করুন : </label>
 
-              <select
+              <select {...register("bookWriter", { required: true })}
                 className="select select-bordered w-full max-w-xs"
-                name="bookWriter"
+
               >
                 <option disabled selected>
                   লেখক নির্বাচন করুন
@@ -170,7 +178,7 @@ const CreateAPost = () => {
             <div>
               <label className="mt-2">*প্রকাশনী সিলেক্ট করুন : </label>
 
-              <select
+              <select {...register("bookAuthor", { required: true })}
                 className="select select-bordered w-full max-w-xs"
                 name="bookAuthor"
               >
@@ -198,7 +206,7 @@ const CreateAPost = () => {
           <div className="grid md:grid-cols-2 gap-5 mx-auto mt-10 px-5">
             <div>
               <label className="mt-2">*ক্যাটাগরি 1 :</label>
-              <select
+              <select {...register("category_1", { required: true })}
                 className="select select-bordered w-full max-w-xs"
                 name="category_1"
               >
@@ -214,7 +222,7 @@ const CreateAPost = () => {
 
             <div>
               <label className="mt-2">*ক্যাটাগরি 2 :</label>
-              <select
+              <select {...register("category_2", { required: true })}
                 className="select select-bordered w-full max-w-xs"
                 name="category_2"
               >
@@ -236,7 +244,7 @@ const CreateAPost = () => {
             <div>
               <label className="mt-2">*ক্যাটাগরি 3 :</label>
 
-              <select
+              <select {...register("category_3", { required: true })}
                 className="select select-bordered w-full max-w-xs"
                 name="category_3"
               >
@@ -255,7 +263,7 @@ const CreateAPost = () => {
             <div>
               <label className="mt-2">*ক্যাটাগরি 4 : </label>
 
-              <select
+              <select {...register("category_4", { required: true })}
                 className="select select-bordered w-full max-w-xs"
                 name="category_4"
               >
@@ -271,19 +279,18 @@ const CreateAPost = () => {
           <div className="flex gap-5 mx-auto mt-10 px-5">
             <div>
               <label className="mt-2">ভাষা : </label>
-              <input
+              <input {...register("language", { required: true })}
                 type="text"
                 placeholder="ভাষা"
-                name="language"
                 className="input input-bordered input-accent w-full "
               />
             </div>
+
             <div>
               <label className="mt-2">পৃষ্ঠা : </label>
-              <input
+              <input {...register("page", { required: true })}
                 type="text"
                 placeholder="পৃষ্ঠা"
-                name="page"
                 className="input input-bordered input-accent w-full "
               />
             </div>
@@ -292,19 +299,17 @@ const CreateAPost = () => {
           <div className="flex  gap-5 mx-auto mt-10 px-5">
             <div>
               <label className="mt-2">পূর্ববর্তী মূল্য : </label>
-              <input
+              <input {...register("oldPrice", { required: true })}
                 type="text"
                 placeholder="পূর্ববর্তী মূল্য"
-                name="oldPrice"
                 className="input input-bordered input-accent w-full "
               />
             </div>
             <div>
               <label className="mt-2">বর্তমান মূল্য : </label>
-              <input
+              <input {...register("newPrice", { required: true })}
                 type="text"
                 placeholder="বর্তমান মূল্য"
-                name="newPrice"
                 className="input input-bordered input-accent w-full "
               />
             </div>
@@ -313,10 +318,9 @@ const CreateAPost = () => {
           <div className=" mt-10 px-5">
             <div className=" mt-10">
               <label className="mt-2">*পিডিএফ লিংক : </label> <br />
-              <input
+              <input {...register("writeBook", { required: true })}
                 className="input input-bordered input-accent w-full"
                 placeholder="পিডিএফ লিংক যুক্ত করুন"
-                name="writeBook"
                 type="text"
               ></input>
             </div>
@@ -325,10 +329,9 @@ const CreateAPost = () => {
           <div className=" mt-10 px-5">
             <div className=" mt-10">
               <label className="mt-2">*বই এর বিবরণী : </label> <br />
-              <textarea
+              <textarea {...register("bookDiscription", { required: true })}
                 className="border input-accent w-full"
                 placeholder="বই এর সংক্ষিপ্ত বিবরণী লিখুন"
-                name="bookDiscription"
                 id=""
                 cols="60"
                 rows="5"
@@ -337,7 +340,7 @@ const CreateAPost = () => {
           </div>
 
           <div className="flex justify-center mt-10">
-            <input type="submit" className="btn btn-outline btn-success" />
+            <input className="btn mt-4 btn-outline " type="submit" value="বই যোগ করুন" />
           </div>
         </form>
 

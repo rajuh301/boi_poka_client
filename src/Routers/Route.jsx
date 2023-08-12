@@ -31,6 +31,7 @@ import EnglishBook from "../route-category/EnglishBook/EnglishBook";
 import Comedy from "../route-category/comedy/Comedy";
 import PdfViewer from "../BookDetails/PdfViewer";
 import Cart from "../BookDetails/Cart";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -165,7 +166,7 @@ const router = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <AdminHome></AdminHome>,
+    element:<AdminHome></AdminHome> ,
   },
 
   {
