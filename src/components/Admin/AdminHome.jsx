@@ -125,7 +125,7 @@ const AdminHome = () => {
 
 
             <div className='flex'>
-                <div className='w-52 block h-full bg-slate-700 text-white px-5 py-64 sticky'>
+                <div className='w-52 block h-full bg-slate-700 text-white px-5 py-64 sticky top-0'>
 
                     <Link to="/createwriter" className='hover:text-green-800 duration-200'>লেখক তৈরি করুন</Link>
                     <br />

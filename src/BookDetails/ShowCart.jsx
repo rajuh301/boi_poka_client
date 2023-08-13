@@ -7,14 +7,14 @@ const ShowCart = ({ cart }) => {
 
 
 
-    const [cartItems, setCartItems] = useState(null);
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
         const localStorageData = JSON.parse(localStorage.getItem('cartItems'));
         if (localStorageData) {
             setCartItems(localStorageData);
         }
-    }, []);
+    }, [cartItems]);
 
     const handleDelete = (data) => {
         const localDataToDeleteId = data._id;

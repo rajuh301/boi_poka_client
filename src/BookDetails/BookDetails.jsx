@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { Tabs } from "antd";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import PrivateRoute from "../Routers/PrivateRoute";
 
 
 const BookDetails = () => {
@@ -176,8 +177,8 @@ const BookDetails = () => {
                   <button onClick={() => handleAddtoCart(bookDetail)} className="me-8 font-extrabold text-[20px]" href="">
                     কার্টে যুক্ত করুন
                   </button>
+                  <PrivateRoute>
 
-            
                     <a
                       target="_blank"
                       rel="noreferrer"
@@ -188,8 +189,8 @@ const BookDetails = () => {
                       বইটি কিনুন
                     </a>
 
-    
 
+                  </PrivateRoute>
 
                 </h2>
               </div>
