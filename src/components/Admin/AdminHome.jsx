@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../shaired/Navbar';
 import Footer from '../shaired/Footer';
 import { Link, Outlet } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 const AdminHome = () => {
@@ -42,26 +43,78 @@ const AdminHome = () => {
 
 
     // ------------------------ Manag Data ----------------
-    const [bookss, setBookss] = useState(null)
-    const [writers, setWriters] = useState(null)
-    const [authors, setAuthors] = useState(null)
+
+    const [datas, setDatas] = useState([])
 
     const handleBook = () => {
-        setBookss(books)
-
+        setDatas(books)
     }
 
     const handleWriter = () => {
-        setWriters(writer)
-
+        setDatas(writer)
     }
 
     const handleAuthor = () => {
-        setAuthors(author)
+        setDatas(author)
     }
 
     // ------------------------ Manag Data ----------------
 
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Delete from different endpoints one by one
+                Promise.all([
+                    fetch(`http://localhost:5000/deleteBook/${_id}`, {
+                        method: 'DELETE'
+                    }),
+                    fetch(`http://localhost:5000/deleteAuthor/${_id}`, {
+                        method: 'DELETE'
+                    }),
+                    fetch(`http://localhost:5000/deleteWriter/${_id}`, {
+                        method: 'DELETE'
+                    })
+                ])
+                    .then(responses => {
+                        return Promise.all(responses.map(response => response.json()));
+                    })
+                    .then(dataArray => {
+                        const totalDeletedCount = dataArray.reduce((total, data) => total + data.deletedCount, 0);
+                        if (totalDeletedCount > 0) {
+                            // Successful deletion
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            );
+                            // Perform any necessary UI updates or data refetching
+                        } else {
+                            Swal.fire(
+                                'Error',
+                                'Failed to delete the item.',
+                                'error'
+                            );
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Delete request error:', error);
+                        Swal.fire(
+                            'Error',
+                            'An error occurred while deleting the item.',
+                            'error'
+                        );
+                    });
+            }
+        });
+    };
 
 
 
@@ -72,7 +125,7 @@ const AdminHome = () => {
 
 
             <div className='flex'>
-                <div className='w-52 block h-full bg-slate-700 text-white px-5 py-64 '>
+                <div className='w-52 block h-full bg-slate-700 text-white px-5 py-64 sticky'>
 
                     <Link to="/createwriter" className='hover:text-green-800 duration-200'>লেখক তৈরি করুন</Link>
                     <br />
@@ -135,20 +188,22 @@ const AdminHome = () => {
                     {/* -----------------------------Show Manag Data-------------------------  */}
                     <div className='ml-10 mt-10'>
 
-                        {bookss ?
-                            bookss.map(book => <div
-                                key={book._id}
+
+
+                        {datas ?
+                            datas.map(da => <div
+                                key={da._id}
                             ><div>
 
                                     <div className="overflow-x-auto">
-                                        <table className="table border bg-green-400 my-2">
+                                        <table className="table border shadow rounded-lg bg-slate-700 text-white my-2">
                                             {/* head */}
                                             <thead>
 
                                             </thead>
                                             <tbody>
                                                 {/* row 1 */}
-                                                <tr>
+                                                <tr className='content-between'>
                                                     <th>
 
                                                     </th>
@@ -156,22 +211,22 @@ const AdminHome = () => {
                                                         <div className="flex items-center space-x-3">
                                                             <div className="avatar">
                                                                 <div className="mask mask-squircle w-12 h-12">
-                                                                    <img src={book?.bookImage} alt="Avatar Tailwind CSS Component" />
+                                                                    <img src={da?.bookImage || da?.photo || ''} alt="Avatar Tailwind CSS Component" />
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <div className="font-bold">{book?.bookName}</div>
+                                                                <div className="font-bold">{da?.bookName || da?.name || da.name}</div>
 
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        {book?.bookWriter}
+                                                        {da?.bookWriter}
                                                         <br />
                                                     </td>
-                                                    <td>{book?.bookAuthor}</td>
-                                                    <th>
-                                                        <button className="btn btn-ghost btn-xs">details</button>
+                                                    <td>{da?.bookAuthor || da?.category}</td>
+                                                    <th className='content-end'>
+                                                        <button onClick={() => handleDelete(da._id)} className="btn btn-ghost btn-xs hover:bg-red-400">Delete</button>
                                                     </th>
                                                 </tr>
 
@@ -185,125 +240,8 @@ const AdminHome = () => {
 
                             </div>) : ""
                         }
-                        {/* ------------------------------------------------- Writer--------------------- */}
-
-                        {writers ?
-                            writers.map(write => <div
-                                key={write._id}
-                            ><div>
-
-                                    <div className="overflow-x-auto">
-                                        <table className="table border bg-green-400">
-                                            {/* head */}
-                                            <thead>
-                                                {/* <tr>
-            <th>
-
-            </th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-            <th></th>
-        </tr> */}
-                                            </thead>
-                                            <tbody>
-                                                {/* row 1 */}
-                                                <tr>
-                                                    <th>
-
-                                                    </th>
-                                                    <td>
-                                                        <div className="flex items-center space-x-3">
-                                                            <div className="avatar">
-                                                                <div className="mask mask-squircle w-12 h-12">
-                                                                    <img src={write?.photo} alt="Avatar Tailwind CSS Component" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div className="font-bold">{write?.name}</div>
-
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        {write?.category}
-                                                        <br />
-                                                    </td>
-
-                                                    <th>
-                                                        <button className="btn btn-ghost btn-xs">Delete</button>
-                                                    </th>
-                                                </tr>
-
-                                            </tbody>
 
 
-                                        </table>
-                                    </div>
-
-                                </div>
-
-                            </div>) : ""
-                        }
-                        {/* --------------------------------- Author---------------- */}
-
-
-                        {authors ?
-                            authors.map(author => <div
-                                key={author._id}
-                            ><div>
-
-                                    <div className="overflow-x-auto">
-                                        <table className="table border bg-green-400">
-                                            {/* head */}
-                                            <thead>
-                                                {/* <tr>
-            <th>
-
-            </th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-            <th></th>
-        </tr> */}
-                                            </thead>
-                                            <tbody>
-                                                {/* row 1 */}
-                                                <tr>
-                                                    <th>
-
-                                                    </th>
-                                                    <td>
-                                                        <div className="flex items-center space-x-3">
-                                                            <div className="avatar">
-
-                                                            </div>
-                                                            <div>
-                                                                <div className="font-bold">{author?.name}</div>
-
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-
-                                                        <br />
-                                                    </td>
-
-                                                    <th>
-                                                        <button className="btn btn-ghost btn-xs">Delete</button>
-                                                    </th>
-                                                </tr>
-
-                                            </tbody>
-
-
-                                        </table>
-                                    </div>
-
-                                </div>
-
-                            </div>) : ""
-                        }
 
                         {/* -----------------------------Show Manag Data--------------------------  */}
 
