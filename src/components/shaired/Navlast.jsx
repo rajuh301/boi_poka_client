@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 import { BsDot } from "react-icons/bs";
-import navData from "./../../data/nav.json";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -38,20 +37,21 @@ const LastNav = () => {
                 <FiChevronDown />
               </div>
 
-              <div className="absolute w-full bg-white p-4 rounded-lg shadow-xl  submenu grid grid-cols-5 gap-x-[60px]">
+              <div className="mx-w-[1080px] mx-auto absolute w-full bg-white p-4 rounded-lg shadow-xl  submenu grid grid-cols-5 gap-x-[60px]">
                 {catergory?.map((writers) => {
                   return (
                     <div key={writers._id}>
                       <Link
-                        to="#"
-                        className="flex p-1 px-8 hover:text-inherit text-black font-normal items-center gap-2 translate-x-[-30px] "
+                        to={`/WriterDetails/${writers._id}`}
+                        className="  p-1 px-8 hover:text-inherit text-black font-normal items-center gap-2 translate-x-[-30px] relative"
                       >
-                        <span className="me-[-10px]">
+                        <span className="me-[-10px] ">
                           <BsDot className="text-[25px] mt-1" />
                         </span>
-                        <Link to={`/WriterDetails/${writers._id}`}>
-                          <span>{writers.name}</span>
-                        </Link>
+
+                        <span className="absolute left-[20px] top-8">
+                          {writers.name}
+                        </span>
                       </Link>
                     </div>
                   );
@@ -64,7 +64,7 @@ const LastNav = () => {
                 <FiChevronDown />
               </div>
 
-              <div className="absolute w-full bg-white p-4 rounded-lg shadow-xl  submenu grid grid-cols-5 gap-x-[60px]">
+              <div className="mx-w-[1080px] mx-auto absolute w-full bg-white p-4 rounded-lg shadow-xl  submenu grid grid-cols-5 gap-x-[60px]">
                 {publishers?.map((publisher) => {
                   return (
                     <div key={publisher._id}>

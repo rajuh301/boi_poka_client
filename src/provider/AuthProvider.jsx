@@ -48,13 +48,13 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             // console.log('current user', currentUser);
 
-            
-           
+
         });
         return () => {
             return unsubscribe();
         }
     }, [])
+
 
     const authInfo = {
         user,

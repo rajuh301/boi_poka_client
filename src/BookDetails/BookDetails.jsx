@@ -3,6 +3,8 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { Link, useLoaderData } from "react-router-dom";
 import { Tabs } from "antd";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import PrivateRoute from "../Routers/PrivateRoute";
 
 const BookDetails = () => {
   const bookDetail = useLoaderData();
@@ -73,7 +75,7 @@ const BookDetails = () => {
           <div className="flex gap-x-10">
             <div className=" w-5/12 bg-[#7c76761c] ps-12 pe-2 pt-12 pb-4 relative">
               <span className="text-[18px]  font-extrabold border-2 text-[#201212be] border-yellow-600 py-2 px-2 bg-amber-200 absolute right-2">
-                <Link>পড়ে দেখুন</Link>
+                <Link to={`/pdfviwer/${writeBook}`}>পড়ে দেখুন</Link>
               </span>
               <img
                 className="md:w-96 md:h-[450px] shadow-sm"
@@ -84,7 +86,7 @@ const BookDetails = () => {
                 <p className="me-2"> Share On : </p>
                 <p>
                   <a href="">
-                    <FaFacebook className="w-[23px] h-[23px] text-[#355496]   me-1"></FaFacebook>
+                    <FaFacebook className="w-[23px] h-[23px] text-[#355496] me-1"></FaFacebook>
                   </a>
                 </p>
                 <p>
@@ -104,7 +106,7 @@ const BookDetails = () => {
                 </p>
               </div>
             </div>
-            <div className="w-7/12 mt-4">
+            <div className="md:w-7/12 mt-4">
               <h1 className="text-2xl  font-extrabold pt-8 pb-4">{bookName}</h1>
               <div className="flex gap-x-8 text-[18px] ">
                 <div>
@@ -218,7 +220,7 @@ const BookDetails = () => {
             </div>
           </div>
         </div> */}
-        <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full md-lg:w-full ">
+        <div className="w-3/12 bg-[#B7B376] py-2 px-2 md:h-full ">
           <h1 className="text-center font-bold text-2xl text-black pb-4">
             সাইডবার
           </h1>

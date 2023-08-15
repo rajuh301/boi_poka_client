@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Rating from "react-rating";
+import { FaStar } from "react-icons/fa";
+import { AiOutlineStar } from "react-icons/ai";
 
 const MotivationalBook = ({ bookPopular }) => {
-  const { bookImage, bookName, _id } = bookPopular;
+  const { bookImage, bookName, _id, bookWriter, rating } = bookPopular;
   return (
     <div className="card md:w-[175px] bg-base-100 ">
       <Link to={`/bookDetails/${_id}`}>
@@ -18,6 +21,17 @@ const MotivationalBook = ({ bookPopular }) => {
       </Link>
 
       <p className="text-center text-[18px]">{bookName}</p>
+      <p className="text-center text-[18px]">{bookWriter}</p>
+      <p className="text-center text-[18px]">
+        <Rating
+          className="text-yellow-300"
+          placeholderRating={rating}
+          emptySymbol={<AiOutlineStar />}
+          placeholderSymbol={<FaStar />}
+          fullSymbol={<FaStar />}
+        />
+        <span className="mb-[30px]">({rating})</span>
+      </p>
     </div>
   );
 };

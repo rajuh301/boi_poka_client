@@ -29,6 +29,8 @@ import BookDetails from "../BookDetails/BookDetails";
 import IslamicBook from "../route-category/IslamicBook/IslamicBook";
 import EnglishBook from "../route-category/EnglishBook/EnglishBook";
 import Comedy from "../route-category/comedy/Comedy";
+import PdfViewer from "../BookDetails/PdfViewer";
+import Cart from "../BookDetails/Cart";
 
 const router = createBrowserRouter([
   {
@@ -180,6 +182,18 @@ const router = createBrowserRouter([
     path: "/createapost",
     element: <CreateAPost></CreateAPost>,
   },
+
+  {
+    path: "/pdfviwer",
+    element: <PdfViewer></PdfViewer>
+  },
+
+  {
+    path: "cart",
+    element: <Cart></Cart>
+  }
+
+
 ]);
 
 export default router;
