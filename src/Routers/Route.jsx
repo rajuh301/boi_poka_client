@@ -31,6 +31,8 @@ import EnglishBook from "../route-category/EnglishBook/EnglishBook";
 import Comedy from "../route-category/comedy/Comedy";
 import PdfViewer from "../BookDetails/PdfViewer";
 import Cart from "../BookDetails/Cart";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -165,22 +167,22 @@ const router = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <AdminHome></AdminHome>,
+    element: <AdminRoute><AdminHome></AdminHome></AdminRoute>,
   },
 
   {
     path: "/createwriter",
-    element: <CreateWriter></CreateWriter>,
+    element: <AdminRoute><CreateWriter></CreateWriter></AdminRoute>,
   },
 
   {
     path: "/createauthor",
-    element: <CreateAuthor></CreateAuthor>,
+    element: <AdminRoute><CreateAuthor></CreateAuthor></AdminRoute>,
   },
 
   {
     path: "/createapost",
-    element: <CreateAPost></CreateAPost>,
+    element: <AdminRoute><CreateAPost></CreateAPost></AdminRoute>,
   },
 
   {
@@ -190,7 +192,7 @@ const router = createBrowserRouter([
 
   {
     path: "cart",
-    element: <Cart></Cart>
+    element: <PrivateRoute><Cart></Cart></PrivateRoute>
   }
 
 

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../login/SocialLogin";
 
 
 const Register = () => {
@@ -104,6 +105,7 @@ const Register = () => {
                         <p className="my-4 text-center">Already have an account? <Link className="text-orange-600 font-bold" to='/login'>Login</Link></p>
 
                     </div>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>
